@@ -18,14 +18,14 @@ namespace Students_Record_App
     public partial class Add_Edit_Students : Form
     {
         // Fields for managing student records
-        private List<Student> studentList;
+        private List<Student>? studentList;
         int index;
         private bool editingMode;
         // Dependencies and constants
-        public Validations validations;
-        public Student_Controller student_Controller;
-        public const string AddressPlaceholder = "Please Enter Address";
-        public const string GenderPlaceholder = "Please Select Gender";
+        public Validations? validations;
+        public Student_Controller? student_Controller;
+        public const string? AddressPlaceholder = "Please Enter Address";
+        public const string? GenderPlaceholder = "Please Select Gender";
 
         public Add_Edit_Students()
         {
@@ -72,7 +72,7 @@ namespace Students_Record_App
             txtBoxFirstName.Text = studentList[index].FirstName;
             txtBoxLastName.Text = studentList[index].LastName;
             cmbGender.Text = studentList[index].Gender;
-            txtClass.Text = studentList[index]._Class ?? string.Empty;
+            txtClass.Text = studentList[index].Class ?? string.Empty;
             txtAge.Text = studentList[index].Age.ToString();
             txtAddress.Text = studentList[index].Address.ToString();
 
@@ -108,11 +108,7 @@ namespace Students_Record_App
             // Display validation errors if not valid
             if (!isValid)
             {
-                lblFirstNameError.Text = updatedStudent.FirstNameError;
-                lblLastNameError.Text = updatedStudent.LastNameError;
-                lblAgeError.Text = updatedStudent.AgeError;
-                lblGenderError.Text = updatedStudent.GenderError;
-                lblDOBError.Text = updatedStudent.DOBError;
+                DisplayValidationErrors(updatedStudent);
                 return;
             }
 
@@ -143,6 +139,14 @@ namespace Students_Record_App
             Close();
         }
 
+        public void DisplayValidationErrors(Student updatedStudent)
+        {
+            lblFirstNameError.Text = updatedStudent.FirstNameError;
+            lblLastNameError.Text = updatedStudent.LastNameError;
+            lblAgeError.Text = updatedStudent.AgeError;
+            lblGenderError.Text = updatedStudent.GenderError;
+            lblDOBError.Text = updatedStudent.DOBError;
+        }
         private void txtAge_TextChanged(object sender, EventArgs e)
         {
             //parsing from text to age , and if successfull return by using out keyword 

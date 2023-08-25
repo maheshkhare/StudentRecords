@@ -10,9 +10,9 @@ namespace Students_Record_App
     public partial class Our_Students : Form
     {
         // Data Members
-        private List<Student> studentList;
-        public Student_Controller student_Controller;
-        public const string YearText = " years";
+        private List<Student>? studentList;
+        public Student_Controller? student_Controller;
+        public const string? YearText = " years";
 
         public Our_Students()
         {
@@ -22,16 +22,19 @@ namespace Students_Record_App
         // Handle form loading
         private void Our_Students_Load_1(object sender, EventArgs e)
         {
-            //Configure dataGridView appearance
+            ConfigureDataGridViewAppearance();
+            UpdateDataGridView();
+            dataGridView1.Rows[0].Selected = true;
+        }
+
+        private void ConfigureDataGridViewAppearance()
+        {
+            Color steelBlue = Color.SteelBlue;
             dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = steelBlue;
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.Font.FontFamily, dataGridView1.Font.Size + 1, FontStyle.Bold);
             dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.SteelBlue;
-
-            UpdateDataGridView();
-            // Select the first row by default
-            dataGridView1.Rows[0].Selected = true;
+            dataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = steelBlue;
         }
 
         // Update DataGridView with student data
@@ -45,7 +48,7 @@ namespace Students_Record_App
             {
                 studentList[i].OriginalIndex = i;
 
-                int rowIndex = dataGridView1.Rows.Add(studentList[i].FirstName, studentList[i].LastName, studentList[i].Gender, studentList[i].Age + YearText, studentList[i]._Class, studentList[i].Address);
+                int rowIndex = dataGridView1.Rows.Add(studentList[i].FirstName, studentList[i].LastName, studentList[i].Gender, studentList[i].Age + YearText, studentList[i].Class, studentList[i].Address);
                 dataGridView1.Rows[rowIndex].Tag = studentList[i].OriginalIndex;
             }
         }

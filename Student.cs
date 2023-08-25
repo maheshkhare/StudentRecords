@@ -14,7 +14,7 @@ namespace Students_Record_App.Models
         public string LastName { get; set; }
         public string Gender { get; set; }
         public string Age { get; set; }
-        public string? _Class { get; set; }
+        public string? Class { get; set; }
         public string Address { get; set; }
         public int OriginalIndex { get; set; }
 
@@ -26,13 +26,13 @@ namespace Students_Record_App.Models
         public string DOBError { get; set; }
 
         // Parameretized constructor
-        public Student(string firstName, string lastName, string gender, string age, string Class, string address, int originalIndex)
+        public Student(string firstName, string lastName, string gender, string age, string _Class, string address, int originalIndex)
         {
             FirstName = firstName;
             LastName = lastName;
             Gender = gender;
             Age = age;
-            _Class = Class;
+            Class = _Class;
             Address = address;
             OriginalIndex = originalIndex;
         }
