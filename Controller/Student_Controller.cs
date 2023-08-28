@@ -1,5 +1,4 @@
-﻿using Students_Record_App.Controller;
-using Students_Record_App.Models;
+﻿using Students_Record_App.Models;
 using Students_Record_App.Utilities;
 using System;
 using System.Collections.Generic;
@@ -7,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Students_Record_App
+namespace Students_Record_App.Controller
 {
     public class Student_Controller
     {
@@ -19,12 +18,12 @@ namespace Students_Record_App
             studentDataHandler = StudentDataHandler.Instance;
         }
 
-        public void AddOrUpdateStudent(Student student, int index, bool editingMode)
+        public void AddOrUpdateStudent(Student student, ref int index, bool editingMode)
         {
-            studentDataHandler.AddOrUpdateStudent(student, index,editingMode);
+            studentDataHandler.AddOrUpdateStudent(student, ref index, editingMode);
         }
 
-        public void RemoveStudent(int index)
+        public void RemoveStudent(in int index)
         {
             studentDataHandler.RemoveStudent(index);
         }

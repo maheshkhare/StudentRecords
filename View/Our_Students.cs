@@ -11,8 +11,8 @@ namespace Students_Record_App
     {
         // Data Members
         private List<Student>? studentList;
-        public Student_Controller? student_Controller;
-        public const string? YearText = " years";
+        private Student_Controller? student_Controller;
+        private const string? YearText = " years";
 
         public Our_Students()
         {
@@ -38,7 +38,7 @@ namespace Students_Record_App
         }
 
         // Update DataGridView with student data
-        public void UpdateDataGridView()
+        private void UpdateDataGridView()
         {
             student_Controller = new Student_Controller();
             studentList = student_Controller.GetAllStudents();
@@ -70,7 +70,7 @@ namespace Students_Record_App
                 int originalIndex = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Tag); // Retrieve originalIndex from the Tag property
 
                 Add_Edit_Students editform = new Add_Edit_Students(); // Pass the selected student
-                editform.Handle_Cell_Content_DoubleClick(originalIndex);
+                editform.Handle_Cell_Content_DoubleClick(ref originalIndex);
 
                 if (editform.ShowDialog() == DialogResult.OK)
                 {

@@ -31,7 +31,7 @@ namespace Students_Record_App.Controller
             new Student("Sundar", "Pichai", "Male", "44", "8th Grade", "XYZ", 1)
         };
 
-        public void AddOrUpdateStudent(Student student, int index,bool editingMode)
+        public void AddOrUpdateStudent(Student student, ref int index,bool editingMode)
         {
             if (index >= 0 && index < studentList.Count && editingMode)
             {
@@ -47,7 +47,7 @@ namespace Students_Record_App.Controller
         }
 
         // Remove a student from the list
-        public void RemoveStudent(int index)
+        public void RemoveStudent(in int index)
         {
             if (index >= 0 && index < studentList.Count)
             {

@@ -10,8 +10,8 @@ namespace Students_Record_App.Controller
     // Interface for the Student Data Handler
     public interface IStudentDataHandler
     {
-        void AddOrUpdateStudent(Student student, int index,bool editingMode);
-        void RemoveStudent(int index);
+        void AddOrUpdateStudent(Student student, ref int index,bool editingMode);
+        void RemoveStudent(in int index);
         List<Student> GetAllStudents();
     }
 }

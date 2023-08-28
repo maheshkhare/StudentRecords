@@ -22,10 +22,9 @@ namespace Students_Record_App
         int index;
         private bool editingMode;
         // Dependencies and constants
-        public Validations? validations;
-        public Student_Controller? student_Controller;
-        public const string? AddressPlaceholder = "Please Enter Address";
-        public const string? GenderPlaceholder = "Please Select Gender";
+        private Student_Controller? student_Controller;
+        private const string? AddressPlaceholder = "Please Enter Address";
+        private const string? GenderPlaceholder = "Please Select Gender";
 
         public Add_Edit_Students()
         {
@@ -57,7 +56,7 @@ namespace Students_Record_App
         }
 
         // Handle double-click on cell content for editing
-        public void Handle_Cell_Content_DoubleClick(int index)
+        public void Handle_Cell_Content_DoubleClick(ref int index)
         {
             this.index = index;
 
@@ -113,7 +112,7 @@ namespace Students_Record_App
             }
 
             // Add or update student data
-            student_Controller.AddOrUpdateStudent(updatedStudent, studentIndex, editingMode);
+            student_Controller.AddOrUpdateStudent(updatedStudent, ref studentIndex, editingMode);
             DialogResult = DialogResult.OK;
             Close();
         }
@@ -127,7 +126,7 @@ namespace Students_Record_App
             if (result == DialogResult.Yes)
             {
                 student_Controller = new Student_Controller();
-                student_Controller.RemoveStudent(index);
+                student_Controller.RemoveStudent(in index);
                 DialogResult = DialogResult.OK;
                 Close();
             }

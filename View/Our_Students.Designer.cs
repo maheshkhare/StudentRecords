@@ -58,7 +58,7 @@
             panel1.Location = new Point(37, 40);
             panel1.Margin = new Padding(4, 5, 4, 5);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1288, 694);
+            panel1.Size = new Size(1288, 765);
             panel1.TabIndex = 0;
             // 
             // dataGridView1
@@ -107,7 +107,7 @@
             dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dataGridView1.RowTemplate.Height = 33;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(1213, 290);
+            dataGridView1.Size = new Size(1213, 557);
             dataGridView1.TabIndex = 7;
             dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
             // 
@@ -203,7 +203,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1361, 773);
+            ClientSize = new Size(1361, 844);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Margin = new Padding(4, 5, 4, 5);
