@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
+
 namespace Students_Record_App
 {
     public partial class Add_Edit_Students : Form
@@ -102,7 +103,7 @@ namespace Students_Record_App
                 studentIndex
             );
 
-            bool isValid = student_Controller.ValidateStudent(updatedStudent);
+            bool isValid = Validations.ValidateInput(updatedStudent);
 
             // Display validation errors if not valid
             if (!isValid)
@@ -126,7 +127,7 @@ namespace Students_Record_App
             if (result == DialogResult.Yes)
             {
                 student_Controller = new Student_Controller();
-                student_Controller.RemoveStudent(in index);
+                student_Controller.RemoveStudent(index);
                 DialogResult = DialogResult.OK;
                 Close();
             }
@@ -163,7 +164,7 @@ namespace Students_Record_App
             student_Controller = new Student_Controller();
 
             DateTime birthDate = dtPicker.Value;
-            int age = student_Controller.CalculateAge(birthDate);
+            int age = Validations.CalculateAge(birthDate);
 
             // Update the txtAge TextBox control
             txtAge.Text = age == 0 ? "" : age.ToString();
